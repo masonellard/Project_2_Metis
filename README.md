@@ -4,7 +4,7 @@ I used the following features in my models: budget, runtime, days since release,
 
 ## File Descriptions
 
-### [IMDb_scrape.ipynb](https://github.com/masonellard/Project_2_Metis/IMDb_scrape.ipynb)
+### [IMDb_scrape.ipynb](https://github.com/masonellard/Project_2_Metis/blob/main/IMDb_scrape.ipynb)
 In this file, I scraped my intitial uncleaned data from IMDb.com using pandas and BeautifulSoup. The resulting dataframe was exported to imdb_data.csv.
 
 ### [data_cleaning_and_engineering.ipynb](https://github.com/masonellard/Project_2_Metis/data_cleaning_and_engineering.ipynb)
