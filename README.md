@@ -7,10 +7,10 @@ I used the following features in my models: budget, runtime, days since release,
 ### [IMDb_scrape.ipynb](https://github.com/masonellard/Project_2_Metis/blob/main/IMDb_scrape.ipynb)
 In this file, I scraped my intitial uncleaned data from IMDb.com using pandas and BeautifulSoup. The resulting dataframe was exported to imdb_data.csv.
 
-### [data_cleaning_and_engineering.ipynb](https://github.com/masonellard/Project_2_Metis/data_cleaning_and_engineering.ipynb)
+### [data_cleaning_and_engineering.ipynb](https://github.com/masonellard/Project_2_Metis/blob/main/data_cleaning_and_engineering.ipynb)
 I imported the uncleaned csv file, and did some initial cleaning and feature engineering. Feature engineering includes turning genre and mpaa rating into dummies, and transforming director, writers, and cast into continous variables. The cleaned dataframe is exported to imdb_data_cleaned.csv.
 
-### [model_fitting.ipynb](https://github.com/masonellard/Project_2_Metis/model_fitting.ipynb)
+### [model_fitting.ipynb](https://github.com/masonellard/Project_2_Metis/blob/main/model_fitting.ipynb)
 I import the cleaned dataset and fit and tune 5 models: OLS, Lasso, Ridge, K-Nearest Neighbors, and XGBoost. I export my best model (XGBoost) into a pickle object for use in the prediction [app](https://github.com/masonellard/Project_2_Metis/tree/main/prediction_app)
 
 ### App Instructions:
