@@ -23,7 +23,7 @@ from sklearn.metrics import r2_score
 from xgboost import XGBRegressor
 
 
-df = pd.read_csv('~/Metis/onl20_ds4/curriculum/project-02/imdb_data.csv')
+df = pd.read_csv('imdb_data.csv')
 df.drop(columns=['Unnamed: 0'], inplace=True)
 
 # dropping all rows with nan values for gross, budget, opn_wknd, and runtime
@@ -31,6 +31,8 @@ df.drop(df[pd.isna(df['gross'])].index, inplace=True)
 df.drop(df[pd.isna(df['budget'])].index, inplace=True)
 df.drop(df[pd.isna(df['opn_wknd'])].index, inplace=True)
 df.drop(df[pd.isna(df['runtime'])].index, inplace=True)
+
+# dropping movies that grossed under 1 million (2 movies)
 df.drop(df[df['gross'] <= 1000000].index, inplace=True)
 
 # taking care of incorrect values for mpaa
@@ -49,21 +51,6 @@ df.drop(columns=['genres'], inplace=True)
 
 df.loc[df.index, 'date'] = pd.to_datetime(df.loc[df.index, 'date'])
 df['days'] = (date.today() - df['date'].dt.date).dt.days
-#df.drop(columns=['date'], inplace=True)
-
-#df['ROI'] = (df.loc[df.index, 'gross'] - df.loc[df.index, 'budget']) / df.loc[df.index, 'budget'] 
-
-#df.drop(df[df['ROI'] > 50].index, inplace=True)
-#plt.scatter(df['ROI'], df['budget']) 
-
-#plt.figure(figsize=[10,10])
-#plt.scatter((df.gross)/100000, (df.budget)/100000)
-#plt.scatter((df[df['date'].dt.year < 1990].gross)/100000, (df[df['date'].dt.year < 1990].budget)/100000, c='red')
-#plt.xlim(0, 3500)
-#plt.ylim(0, 3500)
-#plt.title('Domestic Sales vs. Budget',family='sans-Serif',fontsize = 30,)
-
-#df_plots = df[['date', 'gross', 'budget']]
 
 df['Time Period'] = np.where(df['date'].dt.year < 2000, 'Before Year 2000', 'After Year 2000')
 df['gross'] = df['gross'] / 100000
@@ -72,8 +59,9 @@ sns.relplot(data = df, x='budget', y='gross', hue='Time Period')
 plt.xlabel('Budget', fontsize = 10, style = 'italic')
 plt.ylabel('Gross',fontsize = 10, style = 'italic')
 plt.title('Gross Domestic Sales vs. Budget',fontsize = 15,)
-
 plt.grid()
+
+df.drop(columns=['date'], inplace=True)
 
 # converting directors, writers, and cast from strings of lists to lists
 df.loc[df.index, 'directors'] = df.loc[df.index, 'directors'].apply(ast.literal_eval)
