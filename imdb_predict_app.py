@@ -108,7 +108,7 @@ try:
     
     predict = xgb.predict(df_merged)
     
-    gross = np.exp(predict[-1])
+    gross = (np.exp(predict[-1])*100000).round(2)
     st.header(str(gross))
 except:
     st.write('')
